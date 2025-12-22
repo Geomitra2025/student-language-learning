@@ -178,3 +178,167 @@ body {
         padding: 1rem 2rem;
     }
 }
+
+
+/* Mode Selection Buttons */
+.mode-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mode-btn {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    padding: 2rem;
+    width: 250px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.mode-btn:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.mode-btn .icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.mode-btn h3 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.mode-btn p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Test Mode Styles */
+.test-card {
+    width: 400px;
+    height: 400px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.test-hiragana {
+    font-size: 12rem;
+    color: #667eea;
+}
+
+.answer-input {
+    width: 400px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: 3px solid #667eea;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto 1rem;
+    display: block;
+}
+
+.answer-input:focus {
+    outline: none;
+    border-color: #764ba2;
+}
+
+.feedback {
+    min-height: 50px;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.feedback.correct {
+    color: #4CAF50;
+}
+
+.feedback.wrong {
+    color: #f44336;
+}
+
+.submit-btn {
+    margin: 0 auto 2rem;
+    display: block;
+}
+
+.test-info {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.score {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Results Screen */
+.results-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.final-score {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.score-number {
+    font-size: 6rem;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.score-total {
+    font-size: 3rem;
+    color: #764ba2;
+}
+
+.percentage {
+    font-size: 2rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.message {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Responsive for test mode */
+@media (max-width: 768px) {
+    .test-card {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .test-hiragana {
+        font-size: 8rem;
+    }
+    
+    .answer-input {
+        width: 90%;
+    }
+}
