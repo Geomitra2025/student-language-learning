@@ -103,3 +103,106 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+
+// ========== TEST MODE FUNCTIONALITY ==========
+
+let testIndex = 0;
+let testScore = 0;
+let testAnswers = [];
+
+// Start Test Mode
+function startTest() {
+    testIndex = 0;
+    testScore = 0;
+    testAnswers = [];
+    document.getElementById('startScreen').classList.remove('active');
+    document.getElementById('testScreen').classList.add('active');
+    loadTestQuestion();
+}
+
+// Load Test Question
+function loadTestQuestion() {
+    const card = hiraganaData[testIndex];
+    document.getElementById('testHiragana').textContent = card.hiragana;
+    document.getElementById('answerInput').value = '';
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('feedback').className = 'feedback';
+    document.getElementById('testCounter').textContent = `Question ${testIndex + 1} / ${hiraganaData.length}`;
+    document.getElementById('scoreDisplay').textContent = `Score: ${testScore} / ${testIndex}`;
+    document.getElementById('answerInput').focus();
+}
+
+// Check Answer
+function checkAnswer() {
+    const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
+    const correctAnswer = hiraganaData[testIndex].romaji;
+    const feedbackEl = document.getElementById('feedback');
+    
+    if (!userAnswer) {
+        feedbackEl.textContent = 'Please enter an answer!';
+        feedbackEl.className = 'feedback wrong';
+        return;
+    }
+    
+    if (userAnswer === correctAnswer) {
+        testScore++;
+        feedbackEl.textContent = `✓ Correct! ${hiraganaData[testIndex].hiragana} = ${correctAnswer}`;
+        feedbackEl.className = 'feedback correct';
+        testAnswers.push({question: testIndex + 1, correct: true});
+    } else {
+        feedbackEl.textContent = `✗ Wrong! Correct answer: ${correctAnswer}`;
+        feedbackEl.className = 'feedback wrong';
+        testAnswers.push({question: testIndex + 1, correct: false});
+    }
+    
+    // Move to next question after delay
+    setTimeout(() => {
+        testIndex++;
+        if (testIndex < hiraganaData.length) {
+            loadTestQuestion();
+        } else {
+            showResults();
+        }
+    }, 1500);
+}
+
+// Allow Enter key to submit answer
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('answerInput');
+    if (input) {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+    }
+});
+
+// Show Results
+function showResults() {
+    document.getElementById('testScreen').classList.remove('active');
+    document.getElementById('resultsScreen').classList.add('active');
+    
+    const percentage = Math.round((testScore / hiraganaData.length) * 100);
+    document.getElementById('finalScore').textContent = testScore;
+    document.getElementById('percentage').textContent = `${percentage}%`;
+    
+    let message = '';
+    if (percentage >= 90) {
+        message = 'Excellent! You\'ve mastered Hiragana! 🎉';
+    } else if (percentage >= 70) {
+        message = 'Great job! Keep practicing! 👍';
+    } else if (percentage >= 50) {
+        message = 'Good effort! Study more and try again! 💪';
+    } else {
+        message = 'Keep learning! Practice makes perfect! 📚';
+    }
+    
+    document.getElementById('resultMessage').textContent = message;
+}
+
+// Retake Test
+function retakeTest() {
+    startTest();
+}
