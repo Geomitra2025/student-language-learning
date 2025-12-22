@@ -8,13 +8,24 @@
 </head>
 <body>
     <div class="container">
-        <!-- Start Screen -->
+        <!-- Start Screen with Mode Selection -->
         <div id="startScreen" class="screen active">
-            <h1>Learn Japanese</h1>
-            <button class="start-btn" onclick="startLearning()">🇯🇵 Start Hiragana</button>
+            <h1>Learn Japanese Hiragana</h1>
+            <div class="mode-buttons">
+                <button class="mode-btn" onclick="startLearning()">
+                    <span class="icon">📚</span>
+                    <h3>Learning Mode</h3>
+                    <p>Flip cards to learn</p>
+                </button>
+                <button class="mode-btn" onclick="startTest()">
+                    <span class="icon">✏️</span>
+                    <h3>Test Mode</h3>
+                    <p>Type answers & get scored</p>
+                </button>
+            </div>
         </div>
 
-        <!-- Flashcard Screen -->
+        <!-- Learning Mode: Flashcard Screen -->
         <div id="flashcardScreen" class="screen">
             <h2>Hiragana Flashcards</h2>
             <div class="flashcard" onclick="flipCard()">
@@ -34,6 +45,39 @@
             </div>
             <p class="counter" id="counter">1 / 46</p>
             <button class="back-btn" onclick="goBack()">← Back to Menu</button>
+        </div>
+
+        <!-- Test Mode: Quiz Screen -->
+        <div id="testScreen" class="screen">
+            <h2>Hiragana Test</h2>
+            <div class="test-card">
+                <span class="test-hiragana" id="testHiragana">あ</span>
+            </div>
+            <input type="text" id="answerInput" class="answer-input" placeholder="Type romaji (e.g., a)" autocomplete="off">
+            <div id="feedback" class="feedback"></div>
+            <button class="btn submit-btn" onclick="checkAnswer()">Submit Answer</button>
+            <div class="test-info">
+                <p class="counter" id="testCounter">Question 1 / 46</p>
+                <p class="score" id="scoreDisplay">Score: 0 / 0</p>
+            </div>
+            <button class="back-btn" onclick="goBack()">← Back to Menu</button>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <h2>Test Complete!</h2>
+            <div class="results-card">
+                <div class="final-score">
+                    <span class="score-number" id="finalScore">0</span>
+                    <span class="score-total">/ 46</span>
+                </div>
+                <p class="percentage" id="percentage">0%</p>
+                <p class="message" id="resultMessage">Great job!</p>
+            </div>
+            <div class="buttons">
+                <button class="btn" onclick="retakeTest()">Retake Test</button>
+                <button class="btn" onclick="goBack()">Back to Menu</button>
+            </div>
         </div>
     </div>
 
