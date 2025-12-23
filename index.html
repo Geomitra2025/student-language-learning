@@ -22,9 +22,9 @@
                     <h3>Test Mode</h3>
                     <p>Type answers & get scored</p>
                 </button>
-                                <button class="mode-btn" onclick="startWords()">
+                <button class="mode-btn" onclick="startLesson1()">
                     <span class="icon">📖</span>
-                    <h3>Words</h3>
+                    <h3>Words - Lesson 1</h3>
                     <p>Learn vocabulary words</p>
                 </button>
             </div>
@@ -52,26 +52,58 @@
             <button class="back-btn" onclick="goBack()">← Back to Menu</button>
         </div>
 
-                <!-- Words Vocabulary Screen -->
-        <div id="wordsScreen" class="screen">
-            <h2>Japanese Vocabulary</h2>
-            <div class="flashcard" onclick="flipCard()">
-                <div class="card-inner" id="wordCard">
-                    <div class="card-front">
-                        <span class="word-icon" id="wordIcon">👋</span>
-                        <span class="english-word" id="englishWord">Greeting</span>
-                    </div>
-                    <div class="card-back">
-                        <span class="romaji-word" id="romajiWord">aisatsu</span>
+        <!-- Lesson 1 Screen with Sub-tabs -->
+        <div id="lesson1Screen" class="screen">
+            <h2>Lesson 1</h2>
+            <div class="sub-tabs">
+                <button class="sub-tab-btn active" onclick="showWordsTab()">Words</button>
+                <button class="sub-tab-btn" onclick="showGreetingsTab()">Greetings</button>
+            </div>
+
+            <!-- Words Tab Content -->
+            <div id="wordsTab" class="sub-tab-content active">
+                <h3>Vocabulary Words</h3>
+                <div class="flashcard" onclick="flipCard()">
+                    <div class="card-inner" id="wordCard">
+                        <div class="card-front">
+                            <span class="word-icon" id="wordIcon">👋</span>
+                            <span class="english-word" id="englishWord">Greeting</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="romaji-word" id="romajiWord">aisatsu</span>
+                        </div>
                     </div>
                 </div>
+                <p class="instruction">Click card to see Japanese word</p>
+                <div class="buttons">
+                    <button class="btn" onclick="previousWord()">← Previous</button>
+                    <button class="btn" onclick="nextWord()">Next →</button>
+                </div>
+                <p class="counter" id="wordCounter">1 / 26</p>
             </div>
-            <p class="instruction">Click card to see Japanese word</p>
-            <div class="buttons">
-                <button class="btn" onclick="previousWord()">← Previous</button>
-                <button class="btn" onclick="nextWord()">Next →</button>
+
+            <!-- Greetings Tab Content -->
+            <div id="greetingsTab" class="sub-tab-content">
+                <h3>Greetings</h3>
+                <div class="flashcard" onclick="flipCard()">
+                    <div class="card-inner" id="greetingCard">
+                        <div class="card-front">
+                            <span class="word-icon" id="greetingIcon">👋</span>
+                            <span class="english-word" id="englishGreeting">Good Morning</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="romaji-word" id="romajiGreeting">ohayou gozaimasu</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="instruction">Click card to see Japanese greeting</p>
+                <div class="buttons">
+                    <button class="btn" onclick="previousGreeting()">← Previous</button>
+                    <button class="btn" onclick="nextGreeting()">Next →</button>
+                </div>
+                <p class="counter" id="greetingCounter">1 / 13</p>
             </div>
-            <p class="counter" id="wordCounter">1 / 26</p>
+
             <button class="back-btn" onclick="goBack()">← Back to Menu</button>
         </div>
 
