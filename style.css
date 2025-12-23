@@ -360,7 +360,7 @@ body {
 .japanese-word {
     font-size: 8rem;
     color: #667eea;
-    display: block;
+        display: none;
     margin-bottom: 1rem;
 }
 
