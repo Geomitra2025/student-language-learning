@@ -342,3 +342,61 @@ body {
         width: 90%;
     }
 }
+
+
+/* Words Vocabulary Styles */
+.word-icon {
+    font-size: 6rem;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.english-word {
+    font-size: 3rem;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.japanese-word {
+    font-size: 8rem;
+    color: #667eea;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.romaji-word {
+    font-size: 3rem;
+    color: #764ba2;
+}
+
+#wordsScreen .card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#wordsScreen .card-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .word-icon {
+        font-size: 4rem;
+    }
+    
+    .english-word {
+        font-size: 2rem;
+    }
+    
+    .japanese-word {
+        font-size: 5rem;
+    }
+    
+    .romaji-word {
+        font-size: 2rem;
+    }
+}
