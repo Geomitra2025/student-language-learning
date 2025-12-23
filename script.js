@@ -206,3 +206,71 @@ function showResults() {
 function retakeTest() {
     startTest();
 }
+
+
+// ========== WORDS VOCABULARY FUNCTIONALITY ==========
+
+// Vocabulary Words Data
+const vocabularyData = [
+    { icon: '👋', english: 'Greeting', japanese: 'あいさつ', romaji: 'aisatsu' },
+    { icon: '🙋', english: 'Self-introduction', japanese: 'じこしょうかい', romaji: 'jiko shoukai' },
+    { icon: '👤', english: 'I / Me', japanese: 'わたし', romaji: 'watashi' },
+    { icon: '👥', english: 'You', japanese: 'あなた', romaji: 'anata' },
+    { icon: '📛', english: 'Name', japanese: 'なまえ', romaji: 'namae' },
+    { icon: '❓', english: 'What', japanese: 'なに/なん', romaji: 'nani/nan' },
+    { icon: '🎓', english: 'Student', japanese: 'がくせい', romaji: 'gakusei' },
+    { icon: '🏫', english: 'University', japanese: 'だいがく', romaji: 'daigaku' },
+    { icon: '👨‍🎓', english: 'University student', japanese: 'だいがくせい', romaji: 'daigaku sei' },
+    { icon: '💼', english: 'Work / Job', japanese: 'しごと', romaji: 'shigoto' },
+    { icon: '📍', english: 'Where', japanese: 'どこ', romaji: 'doko' },
+    { icon: '🏠', english: 'To live / reside', japanese: 'すむ', romaji: 'sumu' },
+    { icon: '👔', english: 'Company employee', japanese: 'かいしゃいん', romaji: 'kaisha in' },
+    { icon: '🏭', english: 'Public servant', japanese: 'こうむいん', romaji: 'koumo in' },
+    { icon: '🛍️', english: 'Shop clerk', japanese: 'てんいん', romaji: 'ten in' },
+    { icon: '👨‍🏫', english: 'Teacher', japanese: 'せんせい', romaji: 'sensei' },
+    { icon: '📚', english: 'Pupil / Student', japanese: 'せいと', romaji: 'seito' },
+    { icon: '👨‍🔬', english: 'Professor', japanese: 'きょうじゅ', romaji: 'kyouju' },
+    { icon: '📖', english: 'Assistant professor', japanese: 'じょきょうじゅ', romaji: 'jo kyouju' },
+    { icon: '⚙️', english: 'Engineering dept', japanese: 'こうがくぶ', romaji: 'kou gakubu' },
+    { icon: '🏛️', english: 'Faculty / Department', japanese: 'がくぶ', romaji: 'gakubu' },
+    { icon: '📊', english: 'Major / Specialization', japanese: 'せんこう', romaji: 'senkou' },
+    { icon: '⚡', english: 'Electrical & Electronics', japanese: 'でんきでんし', romaji: 'denki denshi' },
+    { icon: '🔧', english: 'Technology / Engineering', japanese: 'ぎじゅつ', romaji: 'gijutsu' },
+    { icon: '💻', english: 'Information', japanese: 'じょうほう', romaji: 'jouhou' },
+    { icon: '🔬', english: 'Science', japanese: 'かがく', romaji: 'kagaku' }
+];
+
+let wordIndex = 0;
+
+// Start Words Mode
+function startWords() {
+    wordIndex = 0;
+    document.getElementById('startScreen').classList.remove('active');
+    document.getElementById('wordsScreen').classList.add('active');
+    loadWord();
+}
+
+// Load Word
+function loadWord() {
+    const word = vocabularyData[wordIndex];
+    document.getElementById('wordIcon').textContent = word.icon;
+    document.getElementById('englishWord').textContent = word.english;
+    document.getElementById('japaneseWord').textContent = word.japanese;
+    document.getElementById('romajiWord').textContent = word.romaji;
+    document.getElementById('wordCounter').textContent = `${wordIndex + 1} / ${vocabularyData.length}`;
+    
+    // Reset flip
+    document.querySelector('#wordsScreen .flashcard').classList.remove('flipped');
+}
+
+// Next Word
+function nextWord() {
+    wordIndex = (wordIndex + 1) % vocabularyData.length;
+    loadWord();
+}
+
+// Previous Word
+function previousWord() {
+    wordIndex = (wordIndex - 1 + vocabularyData.length) % vocabularyData.length;
+    loadWord();
+}
