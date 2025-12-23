@@ -70,8 +70,14 @@ function loadCard() {
 
 // Flip Card
 function flipCard() {
-    docconst flashcards = document.querySelectorAll('.flashcard');
-    flashcards.forEach(card => card.classList.toggle('flipped'))
+    // Find the active screen and toggle its flashcard
+    const activeScreen = document.querySelector('.screen.active');
+    if (activeScreen) {
+        const flashcard = activeScreen.querySelector('.flashcard');
+        if (flashcard) {
+            flashcard.classList.toggle('flipped');
+        }
+    }
 }
 
 // Next Card
