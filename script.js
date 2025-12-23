@@ -70,7 +70,8 @@ function loadCard() {
 
 // Flip Card
 function flipCard() {
-    document.querySelector('.flashcard').classList.toggle('flipped');
+    docconst flashcards = document.querySelectorAll('.flashcard');
+    flashcards.forEach(card => card.classList.toggle('flipped'))
 }
 
 // Next Card
