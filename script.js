@@ -262,7 +262,6 @@ function loadWord() {
     const word = vocabularyData[wordIndex];
     document.getElementById('wordIcon').textContent = word.icon;
     document.getElementById('englishWord').textContent = word.english;
-    document.getElementById('japaneseWord').textContent = word.japanese;
     document.getElementById('romajiWord').textContent = word.romaji;
     document.getElementById('wordCounter').textContent = `${wordIndex + 1} / ${vocabularyData.length}`;
     
